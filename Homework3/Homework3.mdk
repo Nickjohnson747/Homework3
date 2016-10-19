@@ -108,9 +108,9 @@ a. Convert (8729)~12~ into its octet (base-8) representation.
 b. Write a haskell function that converts any base-8 (octet) number into its base-6 (senary) form.
 
 ##Answer
-```haskell
-octet2senary :: [Int] -> [Int]
-octet2senary xs = undefined
+``` haskell
+  octet2senary :: [Int] -> [Int]
+  octet2senary xs = (xs * 8^{position} + x) * ([(xs-d~0~)/b] mod b) 
 ```
 For example, to obtain the senary representation of (345)~8~, you can call
 
@@ -141,20 +141,36 @@ octet2senary xs = reverse (transBases 10 6 [toDecimal 8 (reverse xs)])
 c. Write a Haskell function that adds two base-8 numbers represented as lists. For example, to add (6273)~8~ and (7712)~8~ in ghci, you type
 
 >Prelude λ&gt; addoctets [6,2,7,3]\ [7,7,1,2]\
-[1,6,1,8,5]
+**[1,6,2,0,5]**
 {color: white; \
 background-color: black} 
 
-You can use the following code stub to get yourself started.
+You can use the following code stub to get yourself started:
+
+##Answer
 ```haskell
   addoctets :: [Int] -> [Int] ->[Int]
-  addoctets x y = undefined
+  addoctets x y z = reverse(x) reverse(y) 
+                  while (null x == False) and (null y == False)
+                  | if ((x !! 0) + (y !! 0) < 8)
+                    | (x !! 0) + (y !! 0) : z
+                    else while (x !! 0) + (y !! 0) > 8
+                    | ((x !! 0) + (y !! 0) - 8)
+                  | drop (x !! 0) drop (y !! 0)
+                  reverse z
 ```
 #Bonus Problems
 * **[10 points]** Write a Haskell function that multiplies two base-b numbers.
 ```haskell
-  mult :: Int -> [Int] -> [Int] ->[Int]
-mult = undefined
+mult :: Int -> [Int] -> [Int] ->[Int]
+mult x y z b = reverse(x) reverse(y) 
+       while (null x == False) and (null y == False)
+          | if ((x !! 0) * (y !! 0) < b)
+              | (x !! 0) * (y !! 0) : z
+            else while (x !! 0) * (y !! 0) > b
+              | ((x !! 0) * (y !! 0) - b)
+          | drop (x !! 0) drop (y !! 0)
+        reverse z
 ```
 * **[10 points]** Write a Haskell function that divides two base-b numbers.
 ```haskell
