@@ -103,14 +103,14 @@ filter p = foldr (\x xs -> if p x then (x : xs) else (xs)) []
 a. Convert (8729)~12~ into its octet (base-8) representation.
 
 ## Answer:
-  - $(35021)$~8~
+  - (35021)~8~
 
 b. Write a haskell function that converts any base-8 (octet) number into its base-6 (senary) form.
 
 ##Answer
 ``` haskell
-  octet2senary :: [Int] -> [Int]
-  octet2senary xs = (xs * 8^{position} + x) * ([(xs-d~0~)/b] mod b) 
+  octet2senary :: [Int] -> Int -> [Int]
+  octet2senary xs b = (xs * 8^{position} + x) * ([(xs-d~0~)/b] mod b) 
 ```
 For example, to obtain the senary representation of (345)~8~, you can call
 
