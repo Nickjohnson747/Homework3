@@ -127,12 +127,12 @@ toDecimal :: Int -> [Int] -> Int
 toDecimal base = foldr (\x y -> x + base*y) 0 
 ```
 ```haskell
-toBaseb :: Int -> Int -> [Int]
-toBaseb base n = [x `mod` base | x <- takeWhile (>0) $ iterate (`div` base) n]  
+toBaseB :: Int -> Int -> [Int]
+toBaseB b n = [x `mod` b | x <- takeWhile (> 0) $ iterate (`div` b) n]  
 ```
 ```haskell
 transBases :: Int -> Int -> [Int] -> [Int]
-transBases b1 b2 n = toBaseb b2 $ toDecimal b1 n 
+transBases b1 b2 n = toBaseB b2 $ toDecimal b1 n 
 ```
 ```haskell
 octet2senary :: [Int] -> [Int]
