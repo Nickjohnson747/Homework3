@@ -110,7 +110,7 @@ b. Write a haskell function that converts any base-8 (octet) number into its bas
 ##Answer
 ``` haskell
   octet2senary :: [Int] -> Int -> [Int]
-  octet2senary xs b = (xs * 8^{position} + x) * ([(xs-d~0~)/b] mod b) 
+  octet2senary xs b = (xs * 8^{elemIndex tail} + x) * ([(xs-(xs !! tail))/b] `mod` b) 
 ```
 For example, to obtain the senary representation of (345)~8~, you can call
 
